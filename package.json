@@ -1,51 +1,92 @@
 {
-	"name": "colorized-access-modifier",
-	"displayName": "colorized-access-modifier",
-	"description": "",
-	"version": "0.0.1",
-	"engines": {
-		"vscode": "^1.57.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"onCommand:colorized-access-modifier.helloWorld"
-	],
-	"main": "./dist/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "colorized-access-modifier.helloWorld",
-				"title": "Hello World"
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run package",
-		"compile": "webpack",
-		"watch": "webpack --watch",
-		"package": "webpack --mode production --devtool hidden-source-map",
-		"test-compile": "tsc -p ./",
-		"test-watch": "tsc -watch -p ./",
-		"pretest": "npm run test-compile && npm run lint",
-		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.57.0",
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.2.2",
-		"@types/node": "14.x",
-		"eslint": "^7.27.0",
-		"@typescript-eslint/eslint-plugin": "^4.26.0",
-		"@typescript-eslint/parser": "^4.26.0",
-		"glob": "^7.1.7",
-		"mocha": "^8.4.0",
-		"typescript": "^4.3.2",
-		"vscode-test": "^1.5.2",
-		"ts-loader": "^9.2.2",
-		"webpack": "^5.38.1",
-		"webpack-cli": "^4.7.0"
-	}
+  "name": "colorized-access-modifier",
+  "displayName": "colorized-access-modifier",
+  "description": "Colorize the Access Modifiers to identify the code under them",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.57.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Other"
+  ],
+  "keywords": [
+    "ruby",
+    "access modifier",
+    "private",
+    "protected",
+    "ruby language"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "icon": "images/icon.png",
+  "main": "./dist/extension.js",
+  "contributes": {
+    "colors": [
+      {
+        "id": "colorized_access_modifier.privateBackground",
+        "description": "Background decoration color for Private",
+        "defaults": {
+          "dark": "#ffbb0055",
+          "light": "#ffa600c0",
+          "highContrast": "#dda200e3"
+        }
+      },
+	  {
+        "id": "colorized_access_modifier.privateText",
+        "description": "Text decoration color for Private",
+        "defaults": {
+          "dark": "#ffde85",
+          "light": "#ad7610",
+          "highContrast": "#140f00"
+        }
+      },
+      {
+        "id": "colorized_access_modifier.protectedBackground",
+        "description": "Background decoration color for Protected",
+        "defaults": {
+          "dark": "#ff000055",
+          "light": "#ff3333bd",
+          "highContrast": "#ff0000ab"
+        }
+      },
+	  {
+        "id": "colorized_access_modifier.protectedText",
+        "description": "Text decoration color for Protected",
+        "defaults": {
+          "dark": "#fd8a8a",
+          "light": "#c70707",
+          "highContrast": "#fdd2d2"
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "test-compile": "tsc -p ./",
+    "test-watch": "tsc -watch -p ./",
+    "pretest": "npm run test-compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.57.0",
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "14.x",
+    "eslint": "^7.27.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "glob": "^7.1.7",
+    "mocha": "^8.4.0",
+    "typescript": "^4.3.2",
+    "vscode-test": "^1.5.2",
+    "ts-loader": "^9.2.2",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0"
+  }
 }
