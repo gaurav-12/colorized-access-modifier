@@ -2,6 +2,7 @@
   "name": "colorized-access-modifier",
   "displayName": "colorized-access-modifier",
   "description": "Colorize the Access Modifiers to identify the code under them",
+  "publisher": "Gaurav Sharma",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.57.0"
