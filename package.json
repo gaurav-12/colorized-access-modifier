@@ -1,8 +1,8 @@
 {
   "name": "colorized-access-modifier",
-  "displayName": "colorized-access-modifier",
+  "displayName": "Colored Access Modifiers",
   "description": "Colorize the Access Modifiers to identify the code under them",
-  "publisher": "Gaurav Sharma",
+  "publisher": "GauravSharma",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.57.0"
@@ -62,6 +62,15 @@
         }
       }
     ]
+  },
+  "homepage": "https://github.com/gaurav-12/colorized-access-modifier/blob/main/README.md",
+  "bugs": {
+    "url": "https://github.com/gaurav-12/colorized-access-modifier/issues",
+    "email": "smcbreen@microsoft.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gaurav-12/colorized-access-modifier.git"
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
