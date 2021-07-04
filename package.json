@@ -3,7 +3,7 @@
   "displayName": "Colored Access Modifiers",
   "description": "Colorize the Access Modifiers to identify the code under them",
   "publisher": "GauravSharma",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.57.0"
   },
