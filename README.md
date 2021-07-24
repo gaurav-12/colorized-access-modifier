@@ -1,4 +1,4 @@
-# 🌈colorized-access-modifier🌈
+# 🌈colorized-access-modifiers🌈
 
 VS Code Extension to highlight access modifiers(excluding Public) of Ruby 💎 Language.
 
@@ -27,6 +27,10 @@ None yet, but do let me know if you find any.
 ### 1.0.0
 
 Initial release.
+
+### 1.1.0
+
+Added support to colorize complete scope of each access modifier, on right of ruler lane.
 
 -----------------------------------------------------------------------------------------------------------
 ## Enjoy! 😃
