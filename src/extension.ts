@@ -2,7 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-// this method is called when your extension is activated
+// This method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 	let timeout: NodeJS.Timer | undefined = undefined;
@@ -15,6 +15,16 @@ export function activate(context: vscode.ExtensionContext) {
 		color: { id: 'colorized_access_modifier.privateText' },
 		fontWeight: 'bold',
 		isWholeLine: true
+	});
+
+	const privateRulerLaneDecorationType = vscode.window.createTextEditorDecorationType({
+		overviewRulerColor: { id: 'colorized_access_modifier.privateBackground' },
+		overviewRulerLane: vscode.OverviewRulerLane.Right
+	});
+
+	const protectedRulerLaneDecorationType = vscode.window.createTextEditorDecorationType({
+		overviewRulerColor: { id: 'colorized_access_modifier.protectedBackground' },
+		overviewRulerLane: vscode.OverviewRulerLane.Right
 	});
 
 	const protectedDecorationType = vscode.window.createTextEditorDecorationType({
@@ -34,17 +44,22 @@ export function activate(context: vscode.ExtensionContext) {
 			return;
 		} else if(!isRuby) {
 			activeEditor.setDecorations(privateDecorationType, []);
+			activeEditor.setDecorations(privateRulerLaneDecorationType, []);
 			activeEditor.setDecorations(protectedDecorationType, []);
 			return;
 		}
-		const regEx = /(^[^\S\r\n]*private$)|(^[^\S\r\n]*protected$)/gm;
+		const declarationRegex = /(^[^\S\r\n]*private$)|(^[^\S\r\n]*protected$)/gm;
+		const privateRulerRegex = /private(\r\n|\r|\n)+(((?!^end)(?!.*protected).+)(\r\n|\r|\n)+)*/gm;
+		const protectedRulerRegex = /protected(\r\n|\r|\n)+(((?!^end)(?!.*private).+)(\r\n|\r|\n)+)*/gm;
 		const text = activeEditor.document.getText();
 
 		const privatesMatches: vscode.DecorationOptions[] = [];
+		const privateRulerMatches: vscode.DecorationOptions[] = [];
 		const protectedMatches: vscode.DecorationOptions[] = [];
+		const protectedRulerMatches: vscode.DecorationOptions[] = [];
 
 		let match;
-		while ((match = regEx.exec(text))) {
+		while ((match = declarationRegex.exec(text))) {
 			const startPos = activeEditor.document.positionAt(match.index);
 			const endPos = activeEditor.document.positionAt(match.index + match[0].length);
 			const decoration:vscode.DecorationOptions = { range: new vscode.Range(startPos, endPos) };
@@ -55,8 +70,26 @@ export function activate(context: vscode.ExtensionContext) {
 				protectedMatches.push(decoration);
 			}
 		}
+
+		
+		while ((match = privateRulerRegex.exec(text))) {
+			const startPos = activeEditor.document.positionAt(match.index);
+			const endPos = activeEditor.document.positionAt(match.index + match[0].length);
+			const decoration:vscode.DecorationOptions = { range: new vscode.Range(startPos, endPos) };
+			privateRulerMatches.push(decoration);
+		}
+
+		while ((match = protectedRulerRegex.exec(text))) {
+			const startPos = activeEditor.document.positionAt(match.index);
+			const endPos = activeEditor.document.positionAt(match.index + match[0].length);
+			const decoration:vscode.DecorationOptions = { range: new vscode.Range(startPos, endPos) };
+			protectedRulerMatches.push(decoration);
+		}
+
 		activeEditor.setDecorations(privateDecorationType, privatesMatches);
+		activeEditor.setDecorations(privateRulerLaneDecorationType, privateRulerMatches);
 		activeEditor.setDecorations(protectedDecorationType, protectedMatches);
+		activeEditor.setDecorations(protectedRulerLaneDecorationType, protectedRulerMatches);
 	}
 
 	function triggerUpdateDecorations() {
@@ -70,6 +103,9 @@ export function activate(context: vscode.ExtensionContext) {
 	if (activeEditor && isRuby) {
 		triggerUpdateDecorations();
 	}
+
+
+	// Code Listeners [START]
 
 	vscode.window.onDidChangeActiveTextEditor(editor => {
 		activeEditor = editor;
@@ -103,7 +139,9 @@ export function activate(context: vscode.ExtensionContext) {
 			triggerUpdateDecorations();
 		}
 	}, null, context.subscriptions);
+
+	// Code Listeners [END]
 }
 
-// this method is called when your extension is deactivated
+// This method is called when your extension is deactivated
 export function deactivate() {}
