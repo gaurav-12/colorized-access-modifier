@@ -20,6 +20,10 @@ You can change the Text and Background Colors for both `private` and `protected`
 - `colorized_access_modifier.privateText`: Text Color of Private
 - `colorized_access_modifier.protectedText`: Text Color of Protected
 
+Additionally, you can change the length of the colorization and the font weight
+- `colorized_access_modifier.colorizeFullLine`: True or false to make the full line in the color
+- `colorized_access_modifier.fontWeight`: Empty string or 'Bold' to change the font weight
+
 ## 😐 Known Issues
 
 None yet, but do let me know if you find any.
