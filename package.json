@@ -3,7 +3,7 @@
   "displayName": "Colorized Access Modifiers",
   "description": "Colorize the Access Modifiers to identify the code under them",
   "publisher": "GauravSharma",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "engines": {
     "vscode": "^1.57.0"
   },
@@ -24,6 +24,23 @@
   "icon": "images/icon.png",
   "main": "./dist/extension.js",
   "contributes": {
+    "configuration":[
+      {
+        "title": "Colorized Access Modifiers",
+        "properties": {
+          "colorized_access_modifier.colorizeFullLine": {
+            "type": "boolean",
+            "default": true,
+            "description": "Define if the color should be added to the full line or to the access modifier only."
+          },
+          "colorized_access_modifier.fontWeight": {
+            "type": "string",
+            "default": "bold",
+            "description": "Define the font weight for the access modifiers."
+          }
+        }
+      }
+    ],
     "colors": [
       {
         "id": "colorized_access_modifier.privateBackground",
@@ -34,7 +51,16 @@
           "highContrast": "#dda200e3"
         }
       },
-	  {
+      {
+        "id": "colorized_access_modifier.privateBackgroundRuler",
+        "description": "Background decoration color for Private in the ruler",
+        "defaults": {
+          "dark": "#ffbb0055",
+          "light": "#ffa600c0",
+          "highContrast": "#dda200e3"
+        }
+      },
+      {
         "id": "colorized_access_modifier.privateText",
         "description": "Text decoration color for Private",
         "defaults": {
@@ -52,7 +78,16 @@
           "highContrast": "#ff0000ab"
         }
       },
-	  {
+      {
+        "id": "colorized_access_modifier.protectedBackgroundRuler",
+        "description": "Background decoration color for Protected in the ruler",
+        "defaults": {
+          "dark": "#ff000055",
+          "light": "#ff3333bd",
+          "highContrast": "#ff0000ab"
+        }
+      },
+      {
         "id": "colorized_access_modifier.protectedText",
         "description": "Text decoration color for Protected",
         "defaults": {
