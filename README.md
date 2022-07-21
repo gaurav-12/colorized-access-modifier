@@ -1,6 +1,6 @@
 # 🌈colorized-access-modifiers🌈
 
-VS Code Extension to highlight access modifiers(excluding Public) of Ruby 💎 [b]PHP 🐘[/b] Language.
+VS Code Extension to highlight access modifiers(excluding Public) of Ruby 💎 and PHP 🐘 Language.
 
 ## 😎 Features
 
