@@ -1,6 +1,6 @@
 # 🌈colorized-access-modifiers🌈
 
-VS Code Extension to highlight access modifiers(excluding Public) of Ruby 💎 Language.
+VS Code Extension to highlight access modifiers(excluding Public) of Ruby 💎 [b]PHP 🐘[/b] Language.
 
 ## 😎 Features
 
@@ -14,7 +14,9 @@ Highlight the Private and Protected access modifiers to easily find/identify the
 You can change the Text and Background Colors for both `private` and `protected` modifiers using following settings:
 
 - `colorized_access_modifier.privateBackground`: Background Color for Private
+- `colorized_access_modifier.privateBackgroundRuler`: Background Color for Private in the ruler
 - `colorized_access_modifier.protectedBackground`: Background Color for Protected
+- `colorized_access_modifier.protectedBackgroundRuler`: Background Color for Protected in the ruler
 - `colorized_access_modifier.privateText`: Text Color of Private
 - `colorized_access_modifier.protectedText`: Text Color of Protected
 
@@ -31,6 +33,10 @@ Initial release.
 ### 1.1.0
 
 Added support to colorize complete scope of each access modifier, on right of ruler lane.
+
+### 1.2.0
+
+Added support to work with PHP files and added the two new color values for the colors in the ruler.
 
 -----------------------------------------------------------------------------------------------------------
 ## Enjoy! 😃
